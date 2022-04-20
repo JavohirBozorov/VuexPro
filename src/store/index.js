@@ -15,8 +15,8 @@ export default createStore({
     },
   },
   mutations: {
-    ADD_PRODUCT_CART: (state, index) => {
-      state.cartProducts.push(state.products[index]);
+    ADD_PRODUCT_CART: (state, element) => {
+      state.cartProducts.push(state.products[element]);
     },
     ADD_LOVE_CART: (state, index) => {
       state.loveProducts.push(state.loveProducts[index]);
@@ -29,12 +29,6 @@ export default createStore({
     },
   },
   actions: {
-    addElementInBasket: (context, element) => {
-      context.commit("ADD_PRODUCT_CART", element);
-    },
-    addElementInHeart: (context, index) => {
-      context.commit("ADD_LOVE_CART", index);
-    },
     deleteElementInBasket: (context, element) => {
       context.commit("DELETE_BASKET", element);
     },

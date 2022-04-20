@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="text-center bg-light">Products</h1>
+    <h1 class="text-center bg-light py-2">Products</h1>
     <ul class="card">
       <li
         v-for="(item, index) in this.$store.state.products"
@@ -8,8 +8,8 @@
         class="card-body"
       >
         <img :src="require(`@/assets/${item.image}`)" class="card-img" />
-        <i @click="addLove(index)" class="bi bi-heart"></i>
-        <i @click="addCart(index)" class="bi bi-bag-check"></i>
+        <i @click="addLove(element)" class="bi bi-heart"></i>
+        <i @click="addCart(indexId)" class="bi bi-bag-check"></i>
         <h4 class="card-title text-center">{{ item.name }}</h4>
       </li>
     </ul>
@@ -18,7 +18,7 @@
 
 <script>
 import axios from "axios";
-import { mapActions } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "HomeView",
@@ -35,13 +35,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["addElementInBasket"]),
-    addCart(elementId) {
-      this.addElementInBasket(elementId);
+    ...mapMutations(["ADD_PRODUCT_CART"]),
+    addCart(element) {
+      this.ADD_PRODUCT_CART(element);
+      // this.$store.state.cartProducts.push(this.$store.state.products[element]);
     },
-    ...mapActions(["addElementInHeart"]),
-    addLove(indexId) {
-      this.addElementInHeart(indexId);
+    ...mapMutations(["ADD_LOVE_CART"]),
+    addLove(elementId) {
+      this.ADD_LOVE_CART(elementId);
     },
   },
 };
