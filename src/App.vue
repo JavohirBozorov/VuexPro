@@ -1,30 +1,50 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <MainNavbar />
 </template>
 
+<script>
+import MainNavbar from "@/components/MainNavbar.vue";
+
+export default {
+  name: "app",
+  components: {
+    MainNavbar,
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
+html {
+  background-color: #f8f9fa;
+}
 nav {
-  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
 }
-
 nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  text-decoration: none;
+  color: #222;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.icon {
+  font-size: 28px;
+  /* margin-right: 1rem; */
+}
+.cart {
+  position: relative;
+}
+.number {
+  position: absolute;
+  right: -5px;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  min-height: 0.9rem;
+  min-width: 0.9rem;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
 }
 </style>

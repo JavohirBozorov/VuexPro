@@ -1,54 +1,45 @@
 <template>
-  <div class="home">
-    <h1 class="text-center bg-light">Products</h1>
+  <div class="heart">
+    <h1 class="text-center">This is heart page</h1>
     <ul class="card">
       <li
-        v-for="(item, index) in this.$store.state.products"
+        v-for="(item, index) in this.$store.state.loveProducts"
         :key="index"
         class="card-body"
       >
         <img :src="require(`@/assets/${item.image}`)" class="card-img" />
-        <i @click="addLove(index)" class="bi bi-heart"></i>
-        <i @click="addCart(index)" class="bi bi-bag-check"></i>
+        <i @click="deleteHeart(index)" class="bi bi-heart-fill"></i>
         <h4 class="card-title text-center">{{ item.name }}</h4>
       </li>
     </ul>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 import { mapActions } from "vuex";
 
 export default {
-  name: "HomeView",
-  props: {},
-  components: {},
   data: () => ({}),
   async created() {
     try {
-      const res = await axios.get(`http://localhost:3000/products`);
+      const love = await axios.get(`http://localhost:3000/loveProducts`);
 
-      this.$store.state.products = res.data;
+      this.$store.state.loveProducts = love.data;
     } catch (e) {
       console.error(e);
     }
   },
   methods: {
-    ...mapActions(["addElementInBasket"]),
-    addCart(elementId) {
-      this.addElementInBasket(elementId);
-    },
-    ...mapActions(["addElementInHeart"]),
-    addLove(indexId) {
-      this.addElementInHeart(indexId);
+    ...mapActions(["deleteElementInHeart"]),
+    deleteHeart(indexId) {
+      this.deleteElementInHeart(indexId);
     },
   },
 };
 </script>
 
-<style scoped>
-.home {
+<style>
+.heart {
   background-color: #f8f9fa;
   text-align: center;
 }
@@ -67,6 +58,7 @@ ul li {
   display: inline-block;
   background-color: #f8f9fa;
   margin: 0 auto;
+  border: none;
 }
 .card-body {
   background-color: #a5d6e7;
@@ -87,24 +79,24 @@ ul li {
   margin-bottom: -5px;
 }
 .card-body:hover .bi-bag-check,
-.card-body:hover .bi-heart {
+.card-body:hover .bi-heart-fill {
   opacity: 1;
 }
-.bi-heart,
+.card .bi-heart-fill,
 .bi-bag-check {
   font-size: 2rem;
   opacity: 0;
   position: absolute;
   right: 1rem;
 }
-.bi-heart {
+.bi-heart-fill {
   top: 1rem;
 }
 .bi-bag-check {
   top: 3.5rem;
 }
 
-.bi-heart:hover,
+.bi-heart-fill:hover,
 .bi-bag-check:hover {
   color: #0d6efd;
 }

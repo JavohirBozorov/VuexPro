@@ -1,0 +1,63 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "image": "1.png",
+            "name": "Element 1"
+        },
+        {
+            "id": 2,
+            "image": "2.png",
+            "name": "Element 2"
+        },
+        {
+            "id": 3,
+            "image": "3.png",
+            "name": "Element 3"
+        },
+        {
+            "id": 4,
+            "image": "4.png",
+            "name": "Element 4"
+        },
+        {
+            "id": 5,
+            "image": "5.png",
+            "name": "Element 5"
+        },
+        {
+            "id": 6,
+            "image": "6.png",
+            "name": "Element 6"
+        },
+        {
+            "id": 7,
+            "image": "7.png",
+            "name": "Element 7"
+        },
+        {
+            "id": 8,
+            "image": "8.png",
+            "name": "Element 8"
+        }
+    ],
+    "cartProducts": [
+        {
+            "id": 1,
+            "image": "1.png",
+            "name": "Element 1"
+        }
+    ],
+    "loveProducts": [
+        {
+            "id": 2,
+            "image": "2.png",
+            "name": "Element 2"
+        },
+        {
+            "id": 3,
+            "image": "3.png",
+            "name": "Element 3"
+        }
+    ]
+}
